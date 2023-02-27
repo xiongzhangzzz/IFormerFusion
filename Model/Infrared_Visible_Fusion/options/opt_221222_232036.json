@@ -1,0 +1,127 @@
+{
+  "task": "ITFuse",
+  "model": "InceptionTransformerFuse",
+  "gpu_ids": [
+    0
+  ],
+  "dist": false,
+  "scale": 1,
+  "n_channels": 1,
+  "path": {
+    "root": "./Model",
+    "task": "./Model/ITFuse",
+    "log": "./Model/ITFuse",
+    "options": "./Model/ITFuse/options",
+    "models": "./Model/ITFuse/models",
+    "images": "./Model/ITFuse/images",
+    "pretrained_netG": null,
+    "pretrained_optimizerG": null,
+    "pretrained_net": null,
+    "pretrained_optimizer": null
+  },
+  "datasets": {
+    "train": {
+      "name": "train_dataset",
+      "dataset_type": "vif",
+      "dataroot_A": "/root/autodl-tmp/MSRS-main/train/ir",
+      "dataroot_B": "/root/autodl-tmp/MSRS-main/train/vi",
+      "H_size": 128,
+      "dataloader_shuffle": true,
+      "dataloader_num_workers": 1,
+      "dataloader_batch_size": 8,
+      "phase": "train",
+      "scale": 1,
+      "n_channels": 1
+    },
+    "test": {
+      "name": "test_dataset",
+      "dataset_type": "vif",
+      "dataroot_A": "./images/ir",
+      "dataroot_B": "./images/vi",
+      "phase": "test",
+      "scale": 1,
+      "n_channels": 1
+    }
+  },
+  "netG": {
+    "net_type": "InceptionTransformerFuse",
+    "img_size": 128,
+    "depths": [
+      3,
+      6,
+      3
+    ],
+    "embed_dims": [
+      60,
+      60,
+      60
+    ],
+    "num_heads": [
+      6,
+      6,
+      6
+    ],
+    "attention_heads": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "pool_size": 4,
+    "use_layer_scale": true,
+    "layer_scale_init_value": 0.0001,
+    "init_type": "default",
+    "scale": 1
+  },
+  "train": {
+    "G_lossfn_type": "vif",
+    "G_lossfn_weight": 1.0,
+    "E_decay": 0.999,
+    "G_optimizer_type": "adam",
+    "G_optimizer_lr": 0.001,
+    "G_optimizer_wd": 0,
+    "G_optimizer_clipgrad": null,
+    "G_optimizer_reuse": false,
+    "G_scheduler_type": "MultiStepLR",
+    "G_scheduler_milestones": [
+      40,
+      80,
+      120,
+      180
+    ],
+    "G_scheduler_gamma": 0.5,
+    "G_regularizer_orthstep": null,
+    "G_regularizer_clipstep": null,
+    "G_param_strict": true,
+    "checkpoint_test": 0,
+    "checkpoint_save": 1,
+    "checkpoint_print": 1,
+    "F_feature_layer": 34,
+    "F_weights": 1.0,
+    "F_lossfn_type": "l1",
+    "F_use_input_norm": true,
+    "F_use_range_norm": false,
+    "E_param_strict": true
+  },
+  "opt_path": "./options/opt.json",
+  "is_train": true,
+  "merge_bn": false,
+  "merge_bn_startpoint": -1,
+  "find_unused_parameters": true,
+  "num_gpu": 1,
+  "rank": 0
+}
