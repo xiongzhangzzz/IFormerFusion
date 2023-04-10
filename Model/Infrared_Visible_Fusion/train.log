@@ -1,0 +1,342 @@
+23-04-10 13:36:34.098 :   task: Infrared_Visible_Fusion
+  model: InceptionTransformerFuse
+  gpu_ids: [0]
+  dist: False
+  scale: 1
+  n_channels: 1
+  path:[
+    root: ./Model
+    task: ./Model/Infrared_Visible_Fusion
+    log: ./Model/Infrared_Visible_Fusion
+    options: ./Model/Infrared_Visible_Fusion/options
+    models: ./Model/Infrared_Visible_Fusion/models
+    images: ./Model/Infrared_Visible_Fusion/images
+    pretrained_net: None
+    pretrained_optimizer: None
+  ]
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: vif
+      dataroot_A: /root/autodl-tmp/MSRS-main/train/ir
+      dataroot_B: /root/autodl-tmp/MSRS-main/train/vi
+      H_size: 64
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 16
+      phase: train
+      scale: 1
+      n_channels: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: vif
+      dataroot_A: ./images/ir
+      dataroot_B: ./images/vi
+      phase: test
+      scale: 1
+      n_channels: 1
+    ]
+  ]
+  netG:[
+    net_type: InceptionTransformerFuse
+    img_size: 64
+    depths: [3, 6, 3]
+    embed_dims: [60, 60, 60]
+    num_heads: [6, 6, 6]
+    attention_heads: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    pool_size: 8
+    use_layer_scale: True
+    layer_scale_init_value: 1e-06
+    init_type: default
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: vif
+    G_lossfn_weight: 1.0
+    E_decay: 0.999
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.001
+    G_optimizer_wd: 0
+    G_optimizer_clipgrad: None
+    G_optimizer_reuse: True
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [20, 40, 80, 120, 180]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    G_param_strict: True
+    checkpoint_test: 0
+    checkpoint_save: 20
+    checkpoint_print: 1
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    E_param_strict: True
+  ]
+  opt_path: options/opt.json
+  is_train: True
+  merge_bn: False
+  merge_bn_startpoint: -1
+  find_unused_parameters: True
+  num_gpu: 1
+  rank: 0
+
+23-04-10 13:36:34.099 : random seed: 7869
+23-04-10 13:37:47.405 :   task: Infrared_Visible_Fusion
+  model: InceptionTransformerFuse
+  gpu_ids: [0]
+  dist: False
+  scale: 1
+  n_channels: 1
+  path:[
+    root: ./Model
+    task: ./Model/Infrared_Visible_Fusion
+    log: ./Model/Infrared_Visible_Fusion
+    options: ./Model/Infrared_Visible_Fusion/options
+    models: ./Model/Infrared_Visible_Fusion/models
+    images: ./Model/Infrared_Visible_Fusion/images
+    pretrained_net: None
+    pretrained_optimizer: None
+  ]
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: vif
+      dataroot_A: /media/alex/F/5.dataset/MSRS-main/test/ir
+      dataroot_B: /media/alex/F/5.dataset/MSRS-main/test/vi
+      H_size: 64
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 16
+      phase: train
+      scale: 1
+      n_channels: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: vif
+      dataroot_A: ./images/ir
+      dataroot_B: ./images/vi
+      phase: test
+      scale: 1
+      n_channels: 1
+    ]
+  ]
+  netG:[
+    net_type: InceptionTransformerFuse
+    img_size: 64
+    depths: [3, 6, 3]
+    embed_dims: [60, 60, 60]
+    num_heads: [6, 6, 6]
+    attention_heads: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    pool_size: 8
+    use_layer_scale: True
+    layer_scale_init_value: 1e-06
+    init_type: default
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: vif
+    G_lossfn_weight: 1.0
+    E_decay: 0.999
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.001
+    G_optimizer_wd: 0
+    G_optimizer_clipgrad: None
+    G_optimizer_reuse: True
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [20, 40, 80, 120, 180]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    G_param_strict: True
+    checkpoint_test: 0
+    checkpoint_save: 20
+    checkpoint_print: 1
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    E_param_strict: True
+  ]
+  opt_path: options/opt.json
+  is_train: True
+  merge_bn: False
+  merge_bn_startpoint: -1
+  find_unused_parameters: True
+  num_gpu: 1
+  rank: 0
+
+23-04-10 13:37:47.419 : random seed: 2284
+23-04-10 13:37:47.422 : Number of train images: 361, iters: 23
+23-04-10 13:38:18.566 :   task: Infrared_Visible_Fusion
+  model: InceptionTransformerFuse
+  gpu_ids: [0]
+  dist: False
+  scale: 1
+  n_channels: 1
+  path:[
+    root: ./Model
+    task: ./Model/Infrared_Visible_Fusion
+    log: ./Model/Infrared_Visible_Fusion
+    options: ./Model/Infrared_Visible_Fusion/options
+    models: ./Model/Infrared_Visible_Fusion/models
+    images: ./Model/Infrared_Visible_Fusion/images
+    pretrained_net: None
+    pretrained_optimizer: None
+  ]
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: vif
+      dataroot_A: /media/alex/F/5.dataset/MSRS-main/test/ir
+      dataroot_B: /media/alex/F/5.dataset/MSRS-main/test/vi
+      H_size: 64
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 16
+      phase: train
+      scale: 1
+      n_channels: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: vif
+      dataroot_A: ./images/ir
+      dataroot_B: ./images/vi
+      phase: test
+      scale: 1
+      n_channels: 1
+    ]
+  ]
+  netG:[
+    net_type: InceptionTransformerFuse
+    img_size: 64
+    depths: [3, 6, 3]
+    embed_dims: [60, 60, 60]
+    num_heads: [6, 6, 6]
+    attention_heads: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    pool_size: 8
+    use_layer_scale: True
+    layer_scale_init_value: 1e-06
+    init_type: default
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: vif
+    G_lossfn_weight: 1.0
+    E_decay: 0.999
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.001
+    G_optimizer_wd: 0
+    G_optimizer_clipgrad: None
+    G_optimizer_reuse: True
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [20, 40, 80, 120, 180]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    G_param_strict: True
+    checkpoint_test: 0
+    checkpoint_save: 20
+    checkpoint_print: 1
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    E_param_strict: True
+  ]
+  opt_path: options/opt.json
+  is_train: True
+  merge_bn: False
+  merge_bn_startpoint: -1
+  find_unused_parameters: True
+  num_gpu: 1
+  rank: 0
+
+23-04-10 13:38:18.567 : random seed: 722
+23-04-10 13:38:18.570 : Number of train images: 361, iters: 23
+23-04-10 13:38:37.550 :   task: Infrared_Visible_Fusion
+  model: InceptionTransformerFuse
+  gpu_ids: [0]
+  dist: False
+  scale: 1
+  n_channels: 1
+  path:[
+    root: ./Model
+    task: ./Model/Infrared_Visible_Fusion
+    log: ./Model/Infrared_Visible_Fusion
+    options: ./Model/Infrared_Visible_Fusion/options
+    models: ./Model/Infrared_Visible_Fusion/models
+    images: ./Model/Infrared_Visible_Fusion/images
+    pretrained_net: None
+    pretrained_optimizer: None
+  ]
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: vif
+      dataroot_A: /media/alex/F/5.dataset/MSRS-main/test/ir
+      dataroot_B: /media/alex/F/5.dataset/MSRS-main/test/vi
+      H_size: 64
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 16
+      phase: train
+      scale: 1
+      n_channels: 1
+    ]
+  ]
+  netG:[
+    net_type: InceptionTransformerFuse
+    img_size: 64
+    depths: [3, 6, 3]
+    embed_dims: [60, 60, 60]
+    num_heads: [6, 6, 6]
+    attention_heads: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    pool_size: 8
+    use_layer_scale: True
+    layer_scale_init_value: 1e-06
+    init_type: default
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: vif
+    G_lossfn_weight: 1.0
+    E_decay: 0.999
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.001
+    G_optimizer_wd: 0
+    G_optimizer_clipgrad: None
+    G_optimizer_reuse: True
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [20, 40, 80, 120, 180]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    G_param_strict: True
+    checkpoint_test: 0
+    checkpoint_save: 20
+    checkpoint_print: 1
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    E_param_strict: True
+  ]
+  opt_path: options/opt.json
+  is_train: True
+  merge_bn: False
+  merge_bn_startpoint: -1
+  find_unused_parameters: True
+  num_gpu: 1
+  rank: 0
+
+23-04-10 13:38:37.551 : random seed: 79
+23-04-10 13:38:37.557 : Number of train images: 361, iters: 23

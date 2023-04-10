@@ -1,19 +1,15 @@
 import os.path
 import math
 import argparse
-import time
 import random
 import numpy as np
-from collections import OrderedDict
 import logging
 from torch.utils.data import DataLoader
 from torch.utils.data.distributed import DistributedSampler
 import torch
 
 from utils import utils_logger
-from utils import utils_image as util
 from utils import utils_option as option
-from utils.utils_dist import get_dist_info, init_dist
 
 from dataloader import Dataset
 import warnings
@@ -30,7 +26,7 @@ def main(json_path='opt.json'):
     
     # get parsers
     parser = argparse.ArgumentParser()
-    parser.add_argument('--opt', type=str, default='./IFormerFusion/options/opt_local.json', help='Path to option JSON file.')
+    parser.add_argument('--opt', type=str, default='./options/opt.json', help='Path to option JSON file.')
 
     opt = option.parse(parser.parse_args().opt, is_train=True)
     init_epoch, init_path = option.find_last_checkpoint(opt['path']['models'], net_type='G')
@@ -40,8 +36,6 @@ def main(json_path='opt.json'):
     cur_epoch = max(init_epoch, init_iter_optimizer)
     
     
-    
-    border = opt['scale']
 
     # ----------------------------------------
     # save opt to  a '../option.json' file

@@ -1,5 +1,5 @@
 {
-  "task": "Infrared_Visible_Fusion",
+  "task": "Infrared_Visible_Fusion4",
   "model": "InceptionTransformerFuse",
   "gpu_ids": [
     0
@@ -19,22 +19,13 @@
     "train": {
       "name": "train_dataset",
       "dataset_type": "vif",
-      "dataroot_A": "/root/autodl-tmp/MSRS-main/train/ir",
-      "dataroot_B": "/root/autodl-tmp/MSRS-main/train/vi",
+      "dataroot_A": "/media/alex/F/5.dataset/MSRS-main/test/ir",
+      "dataroot_B": "/media/alex/F/5.dataset/MSRS-main/test/vi",
       "H_size": 64,
       "dataloader_shuffle": true,
       "dataloader_num_workers": 1,
       "dataloader_batch_size": 16,
       "phase": "train",
-      "scale": 1,
-      "n_channels": 1
-    },
-    "test": {
-      "name": "test_dataset",
-      "dataset_type": "vif",
-      "dataroot_A": "./images/ir",
-      "dataroot_B": "./images/vi",
-      "phase": "test",
       "scale": 1,
       "n_channels": 1
     }
